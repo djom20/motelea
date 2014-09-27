@@ -63,5 +63,9 @@ function loadScript(src) {
           templateUrl: 'views/near.html', 
           controller : 'nearCtrl'
         })
+        .when('/promos', {
+          templateUrl: 'views/promos.html'
+        })
+
 
     }]);
