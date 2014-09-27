@@ -1,0 +1,49 @@
+p{padding: 0; margin: 0;}
+
+.tlr{
+	text-align: right;
+}
+
+.tlc{
+	text-align: center;
+}
+
+.to-center{
+	margin: 0 auto;
+	display: table;
+	float: none;
+}
+.divider{
+	 display: block;
+	 border-bottom: 1px solid black;
+	 padding: 10px 0;
+}
+
+.wrapper{
+	  width: 95%;
+	  max-width: 720px;
+	  min-width: 320px;
+	  margin: 0 auto;
+	  display:table;
+}
+
+.ng-enter{
+	 
+}
+
+table{
+	width: 100%;
+}
+
+body{
+	
+}
+
+
+#map{
+	
+	height: 200px;
+	background: #ccc;
+	left: 0;
+	width: 100%;
+}
