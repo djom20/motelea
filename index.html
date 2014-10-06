@@ -3,31 +3,32 @@
 <html lang='es-CO' ng-app='motelea'>
    
    <head>
+      <meta charset="utf-8">
    	  <title>Motelea - Encuentra moteles cerca de ti</title>
-   	  <link rel='stylesheet' href='assets/css/animate.css' /> 
-   	  <link rel='stylesheet/less' href='assets/less/default.less' /> 
-          <script type="text/javascript" src='assets/js/jquery-2.0.0.min.js'></script>
-          <script type="text/javascript" src='assets/js/less.js'></script>
-
+      <link rel='stylesheet' href='assets/css/animate.css' /> 
+      <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css"> 
+      <link rel='stylesheet/less' href='assets/less/default.less' />
+      <link rel="stylesheet" type="text/css" href="assets/css/normalize.css"> 
+      <link rel="stylesheet" type="text/css" href="assets/css/style.css"> 
+      <script type="text/javascript" src='assets/js/jquery-2.0.0.min.js'></script>
+      <script type="text/javascript" src='assets/js/less.js'></script>
    </head>
 
    <body>
    
      <div id='container'>
-
           <header>
-           <br>
-               <div class='bar1 wrapper'>
-               	   <table>
-               	      <tr>
-               	      	<td><a href="">...</a></td>
-               	      	<td><p class='tlr'>Motelea</p></td>
-               	      </tr>
-               	   </table>
-               </div>
-
-               <div class='divider wrapper'></div>
-           <br>
+            <div class="topH noSelect">
+              <div>
+                <h1><i class="fa fa-bars"></i> Motelea</h1>
+              </div>
+              <div>
+                <i class="fa fa-search"></i>
+              </div>
+            </div>
+          </header>
+         <!--  <header>
+               
 
                <div class='bar2 wrapper'>
                	 <table>
@@ -44,7 +45,7 @@
                	      </tr>
                	   </table>
                </div>
-          </header>
+          </header> -->
 
           <div id='app-cont' class='animated' ng-animate ng-view>
             

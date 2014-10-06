@@ -1,3 +1,165 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+*{
+	border:0;
+	margin:0;
+	padding: 0;
+}
+body{
+	font-family: 'Open sans', sans-serif;
+	font-size: 14px;
+}
+header{
+	
+}
+
+header .topH{
+	background: #221122;
+	position: relative;
+	height: 90px;
+}
+header .topH div:first-child{
+	position: absolute;
+	left: 1%;
+	top:0;
+}
+header .topH div:last-child{
+	position: absolute;
+	right: 1%;
+	top:0;
+}
+header .topH div:last-child i{
+	font-size: 2em;
+	font-weight: 300;
+	margin: 0.67em 0;
+}
+header .topH i{
+	color:#F20649;
+}
+header h1{
+	color:white;
+}
+section.home .bottomH{
+	background: url(../img/header.jpg) no-repeat;
+	background-size: 100% 100%;
+	height: 400px;
+}
+section.home .bottomH .promos{
+	padding-top: 2em;
+	text-align: center;
+}
+section.home .bottomH .promos a{
+	background: #FFA755;
+	color:white;
+	font-size: 1.4em;
+	padding:.3em .6em;
+	text-decoration: none;
+}
+section.home .bottomH .near{
+	background: #F20649;
+	color:white;
+	display: block;
+	font-size: 2.5em;
+	font-weight: 300;
+	margin: 0 auto;
+	margin-top: 2em;
+	padding: .2em;
+	text-decoration: none;
+	text-align: center;
+	width: 94%;
+}
+section.home .bottomH .here{
+	color:white;
+	font-size: 1.2em;
+	margin-top: 8em;
+	text-align: center;
+}
+section.home .bottomH .here span{
+	display: block;
+}
+section.home .hoursContainer{
+	background: #301630;
+	padding: 50px 0;
+	text-align: center;
+}
+section.home h3{
+	color:white;
+	font-size: 1.6em;
+	font-weight: 100;
+	padding-bottom: 1.3em;
+}
+section.home .hoursContainer .hours{
+	background: #210F21;
+	margin: 0 auto;
+	padding: 2em 0;
+	text-align: center;
+	width: 90%;
+}
+section.home .hoursContainer .hours a{
+	color: white;
+	display: inline-block;
+	font-size: 1em;
+	margin: 0 3%;
+	text-decoration: none;
+	vertical-align: top;
+}
+section.home .gallery{
+	background: url(../img/motel.jpg) no-repeat;
+	background-size: 100% 100%;
+	color:white;
+	height: 400px;
+	position:relative;
+	text-align: center;
+}
+section.home .gallery .populares{
+	border:thin solid white;
+	color:white;
+	display: inline-block;
+	font-size: 1.2em;
+	margin: 1em 0;
+	padding:.4em .6em;
+	text-decoration: none;
+	text-align: center;
+}
+section.home .gallery .price{
+	background: rgba(0,0,0,.4);
+	position: absolute;
+	left: 20px;
+	top:130px;
+}
+section.home .gallery .price span{
+	display: block;
+	font-size: 1.7em;
+	padding: .2em .3em;
+}
+section.home .gallery .price span:last-child{
+	background: #F20649;
+	font-size: 1.2em;
+	font-weight: 100;
+}
+section.home .gallery .bottomG{
+	background: rgba(0,0,0,.4);
+	bottom:0;
+	box-sizing:border-box;
+	font-size: 1.2em;
+	padding:1em;
+	position: absolute;
+	text-align: left;
+	width: 100%;
+}
+section.home .gallery .bottomG h4{
+	font-size: 1.6em;
+}
+section.home .gallery .bottomG span{
+	display: block;
+}
+.noSelect{
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
 p{padding: 0; margin: 0;}
 
 .tlr{
@@ -19,25 +181,18 @@ p{padding: 0; margin: 0;}
 	 padding: 10px 0;
 }
 
-.wrapper{
+/*.wrapper{
 	  width: 95%;
 	  max-width: 720px;
 	  min-width: 320px;
 	  margin: 0 auto;
 	  display:table;
-}
+}*/
 
 .ng-enter{
 	 
 }
 
-table{
-	width: 100%;
-}
-
-body{
-	
-}
 
 
 #map{
@@ -46,4 +201,11 @@ body{
 	background: #ccc;
 	left: 0;
 	width: 100%;
+}
+@media(max-width: 480px) {
+	section.home .bottomH .near{
+		font-size: 2.1em;
+		margin-top: 3em;
+		width: 92%;
+	}
 }
