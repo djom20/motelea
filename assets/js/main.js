@@ -33,16 +33,17 @@ function loadScript(src) {
 
  app.controller('nearCtrl', function(){
      
-          		 	     $('#map').height( ($(window).height() - $('header').height()) - 30 );
+          		 	$('#map').height( ($(window).height() - $('header').height()) - 30 );
    						  loadScript('http://maps.google.com/maps/api/js?sensor=false&callback=loadMap');
    						
 
  });      		 	    
 
 
-  app.controller('searchCtrl', function(){
+  app.controller('searchCtrl', function($scope){
      
-   						
+   						$scope.city = "assets/img/header.jpg";
+
 
  });      		 	     
 
@@ -69,3 +70,6 @@ function loadScript(src) {
 
 
     }]);
+
+
+

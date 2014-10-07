@@ -5,6 +5,37 @@
    <head>
       <meta charset="utf-8">
    	  <title>Motelea - Encuentra moteles cerca de ti</title>
+
+<meta name="description" content="">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+        <meta http-equiv="cleartype" content="on">
+
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/touch/apple-touch-icon-144x144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/touch/apple-touch-icon-114x114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/touch/apple-touch-icon-72x72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="img/touch/apple-touch-icon-57x57-precomposed.png">
+        <link rel="shortcut icon" sizes="196x196" href="img/touch/touch-icon-196x196.png">
+        <link rel="shortcut icon" href="img/touch/apple-touch-icon.png">
+
+         <!-- Tile icon for Win8 (144x144 + tile color) -->
+        <meta name="msapplication-TileImage" content="img/touch/apple-touch-icon-144x144-precomposed.png">
+        <meta name="msapplication-TileColor" content="#FF0148">
+
+        
+        <link rel="canonical" href="http://www.example.com/" >
+        
+
+     
+        <meta name="mobile-web-app-capable" content="yes">
+      
+
+      
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#FF0148">
+        <meta name="apple-mobile-web-app-title" content="">
+
       <link rel='stylesheet' href='assets/css/animate.css' /> 
       <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css"> 
       <link rel='stylesheet/less' href='assets/less/default.less' />
@@ -17,14 +48,18 @@
    <body>
    
      <div id='container'>
-          <header>
-            <div class="topH noSelect">
-              <div>
+          <header >
+            <div class="topH noSelect wrapper" >
+              <table >
+                <tr>
+                  <td>
                 <h1><i class="fa fa-bars"></i> Motelea</h1>
-              </div>
-              <div>
-                <i class="fa fa-search"></i>
-              </div>
+                 </td>
+                  <td>
+                <icon style="font-size:21px" class="to-right"> <i class="fa fa-search"></i> </icon>
+                 </td>
+               </tr>
+             </table>
             </div>
           </header>
          <!--  <header>
@@ -46,7 +81,8 @@
                	   </table>
                </div>
           </header> -->
-
+<br>
+<br>
           <div id='app-cont' class='animated' ng-animate ng-view>
             
           		
