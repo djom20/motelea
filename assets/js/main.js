@@ -2,6 +2,7 @@ var mapLoaded = false;
 window.MAP = null;
 window.positionMark = null;
 
+
 function loadMap(){
           		 	     	var canvas = document.getElementById('map');
                       _location.latLng = new google.maps.LatLng(_location.lat,_location.lng);
@@ -16,6 +17,16 @@ function loadMap(){
           		 	      
                 window.MAP = new google.maps.Map(canvas, options);
                 utils.position.init();
+
+
+                  navigator.geolocation.watchPosition(function(position) {
+
+                                 
+                                        _location.lat = position.coords.latitude;
+                                        _location.lng = position.coords.longitude;
+                                         utils.position.update();
+
+                                }, null, {maximumAge: 3000, timeout: 5000, enableHighAccuracy: true} );
 
                                      
 
@@ -54,10 +65,16 @@ var utils = {
        {
          update : function(){
 
-          if(!google) return;
+          if(google){
 
-         _location.latLng = new google.maps.LatLng(_location.lat,_location.lng);
-         positionMark.setPosition(_location.latLng)
+            _location.latLng = new google.maps.LatLng(_location.lat,_location.lng);
+             positionMark.setPosition(_location.latLng);
+
+             console.log('position changed');
+             
+          }
+
+         
 
         },
         init : function(){
@@ -107,15 +124,7 @@ var _location = {
                                 });
 
 
-                                navigator.geolocation.watchPosition(function(position) {
-
-                                 
-                                        _location.lat = position.coords.latitude;
-                                        _location.lng = position.coords.longitude;
-                                         utils.position.update();
-
-                                }, null, {maximumAge: 3000, timeout: 5000, enableHighAccuracy: true} );
-
+                              
                            })
 
                     }
