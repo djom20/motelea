@@ -1,15 +1,27 @@
 var mapLoaded = false;
+window.MAP = null;
+window.positionMark = null;
 
 function loadMap(){
           		 	     	var canvas = document.getElementById('map');
-          		 	     	var options = {
- 								 center: new google.maps.LatLng(-34.397, 150.644),
- 								 zoom: 8,
- 								 mapTypeId: google.maps.MapTypeId.ROADMAP
-									};
-          		 	     	var MAP = new google.maps.Map(canvas, options);
+                      _location.latLng = new google.maps.LatLng(_location.lat,_location.lng);
 
-          		 	     }
+          		 	     	var options = {
+ 								 center: _location.latLng ,
+ 								 zoom: 13,
+ 								 mapTypeId: google.maps.MapTypeId.ROADMAP
+									};                  
+
+
+          		 	      
+                window.MAP = new google.maps.Map(canvas, options);
+                utils.position.init();
+
+                                     
+
+
+          		 }
+
 
 function loadScript(src) {
   
@@ -35,22 +47,110 @@ var render = {
       }
 }
 
+
+var utils = {
+       position : 
+            
+       {
+         update : function(){
+
+          if(!google) return;
+
+         _location.latLng = new google.maps.LatLng(_location.lat,_location.lng);
+         positionMark.setPosition(_location.latLng)
+
+        },
+        init : function(){
+
+            positionMark = new google.maps.Marker({
+                 position: _location.latLng,
+                 map: window.MAP,                 
+                 icon : 'assets/img/current.png'
+                });
+
+        }
+
+       }
+}
+
+var _location = {
+     lat : null,
+     lng : null,
+     city : null,
+     latLng : null        
+}
+
+
+ var enviroment = {
+      desktop : {
+              init : function(){
+
+              },
+              perms : {
+                    location : function( callback){
+
+                         if(navigator.geolocation)
+                           navigator.geolocation.getCurrentPosition(function(position){
+
+                                _location.lat = position.coords.latitude;
+                                _location.lng = position.coords.longitude;
+
+
+
+                                $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?latlng=' + _location.lat + ',' + _location.lng, function(rs){
+
+                                     _location.city = rs.results[0].address_components[3].short_name.split(' ')[0];
+                                      console.log(JSON.stringify(_location));
+
+                                      callback(_location);
+
+                                });
+
+
+                                navigator.geolocation.watchPosition(function(position) {
+
+                                 
+                                        _location.lat = position.coords.latitude;
+                                        _location.lng = position.coords.longitude;
+                                         utils.position.update();
+
+                                }, null, {maximumAge: 3000, timeout: 5000, enableHighAccuracy: true} );
+
+                           })
+
+                    }
+              }
+      },
+      mobile : {
+          init : function(){
+
+               $(document).on('deviceReady', function(){
+
+               })
+
+          }
+      }
+ }
+
+
  var app = angular.module('motelea', ['ngRoute', 'ngAnimate']);   
 
 
- app.controller('nearCtrl', function(){
+app.controller('nearCtrl', function(){
      
-                //$('#map').css( {marginTop : $('header').height()} );
                 render.map();
-   						  loadScript('http://maps.google.com/maps/api/js?sensor=false&callback=loadMap');
+                loadScript('//maps.google.com/maps/api/js?sensor=false&callback=loadMap');
+   					//	  loadScript('//google-maps-utility-library-v3.googlecode.com/svn/trunk/geolocationmarker/src/geolocationmarker-compiled.js');
+                //var GeoMarker = new GeolocationMarker(MAP);
+
    						
 
  });      		 	    
 
 
-  app.controller('searchCtrl', function($scope){
+app.controller('searchCtrl', function($scope){
      
-   						$scope.city = "assets/img/header.jpg";
+   						$scope.city = "";
               $scope.searching = false;
 
 
@@ -58,6 +158,15 @@ var render = {
                    $scope.searching = !$scope.searching;
                    console.log($scope.searching);
               }
+
+              enviroment.desktop.perms.location(function(loc){
+
+                  $scope.$apply(function() {
+                      $scope.city = loc.city;
+                      });
+
+              });
+
 
  });      		 	     
 
@@ -67,6 +176,7 @@ var render = {
 
     
       $(window).on('resize', render.map);
+
 
      
       $routeProvider
