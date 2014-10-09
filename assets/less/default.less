@@ -1,4 +1,6 @@
-@purple2 : #320D2C;
+@purple2 : #301630;
+@purple : #21081D;
+@fushia : #F20649;
 
 @-webkit-keyframes zoomOut {
   0% {
@@ -138,11 +140,17 @@ body{
 	background: #ccc;
 	left: 0;
 	width: 100%;
+  margin-top: 7px;
 }
 
 
 .bar2{
-   background: purple2;
+   background: @purple2;
+   
+     a{
+       text-decoration: none;
+       color:white;
+     }
 }
 
 .white{
@@ -151,4 +159,30 @@ body{
 
 .light{
    font-weight: lighter;
+}
+
+.amenu{
+   text-decoration: none;
+}
+
+
+.hiligth{
+
+    position: relative;
+    .wrapper;
+    transition:animate all .5s;
+
+    .hiligther{
+          width: 33%;
+position: absolute;
+height: 2px;
+//background: #f20649;
+left: 0;
+top: -2px;
+-webkit-transform: translatex(0);        
+    }
+}
+
+.hidden{
+  display: none !important;
 }

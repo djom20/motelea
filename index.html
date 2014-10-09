@@ -6,7 +6,7 @@
       <meta charset="utf-8">
    	  <title>Motelea - Encuentra moteles cerca de ti</title>
 
-<meta name="description" content="">
+        <meta name="description" content="">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
@@ -24,7 +24,7 @@
         <meta name="msapplication-TileColor" content="#FF0148">
 
         
-        <link rel="canonical" href="http://www.example.com/" >
+        <link rel="canonical" href="http://gomosoft.com/" >
         
 
      
@@ -41,7 +41,6 @@
       <link rel='stylesheet/less' href='assets/less/default.less' />
       <link rel="stylesheet" type="text/css" href="assets/css/normalize.css"> 
       <link rel="stylesheet" type="text/css" href="assets/css/style.css"> 
-      <script type="text/javascript" src='assets/js/jquery-2.0.0.min.js'></script>
       <script type="text/javascript" src='assets/js/less.js'></script>
    </head>
 
@@ -51,15 +50,38 @@
           <header >
             <div class="topH noSelect wrapper" >
               <table >
-                <tr>
-                  <td>
-                <h1 style="font-weight: 300;"><i class="fa fa-bars"></i> Motelea</h1>
+                <tr ng-controller="searchCtrl" >
+                  <td  class="animated">
+                <h1 style="font-weight: 300;" ng-class="{ 'animated fadeIn' : !searching, 'hidden' : searching }"><a href="#/menu" class="amenu"><i style="color:#FA054B" class="fa">&#9776;</i></a> Motelea</h1>
+
+                <div ng-class="{ 'animated fadeIn' : searching , 'hidden' : !searching }" class="hidden">
+                  <input type="text" value="" placeholder="Buscar...">
+                </div>
+
                  </td>
-                  <td>
-                <icon style="font-size:21px" class="to-right"> <i class="fa fa-search"></i> </icon>
+                  <td >
+                    <a href="#" ng-click='toggle()' style="font-size:21px" class="to-right">
+                    <icon > <i class="fa fa-search"></i> </icon>
+                    </a>
                  </td>
                </tr>
              </table>
+            </div>
+            <div class="noSelect bar2">
+              <div style="padding: 15px 0;">
+                <table class="wrapper">
+                  <tbody>
+                    <tr>
+                       <td><a href="#/home">Buscar Motel</a></td>
+                       <td class="tlc"><a href="#/promos">Promos</a></td>
+                       <td class="tlr"><a href="#/near">Cerca de mi</a></td>
+                    </tr>
+                  </tbody>
+                </table>    
+                </div>  
+                <div class="hiligth">
+                     <div class="hiligther"></div>
+                </div>              
             </div>
           </header>
          <!--  <header>
@@ -81,8 +103,11 @@
                	   </table>
                </div>
           </header> -->
-<br>
-<br>
+
+          <br>
+          <br>
+          <br>
+
           <div id='app-cont' class='animated' ng-animate ng-view>
             
           		
@@ -94,6 +119,9 @@
           <script type="text/javascript" src='assets/js/angular.min.js'></script>
           <script type="text/javascript" src='assets/js/angular-route.min.js'></script>
           <script type="text/javascript" src='assets/js/angular-animate.min.js'></script>
+          <script type="text/javascript" src='assets/js/angular-touch.min.js'></script>
+          <script type="text/javascript" src='assets/js/fastclick.js'></script>
+      <script type="text/javascript" src='assets/js/jquery-2.0.0.min.js'></script>          
           <script type="text/javascript" src='assets/js/main.js'></script>
 
    </body>

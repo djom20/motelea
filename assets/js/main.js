@@ -28,12 +28,20 @@ function loadScript(src) {
 }
 
 
+var render = {
+      map : function(){
+
+              $('#map').height( ($(window).height() - $('header').height())  );
+      }
+}
+
  var app = angular.module('motelea', ['ngRoute', 'ngAnimate']);   
 
 
  app.controller('nearCtrl', function(){
      
-          		 	$('#map').height( ($(window).height() - $('header').height()) - 30 );
+                //$('#map').css( {marginTop : $('header').height()} );
+                render.map();
    						  loadScript('http://maps.google.com/maps/api/js?sensor=false&callback=loadMap');
    						
 
@@ -43,13 +51,23 @@ function loadScript(src) {
   app.controller('searchCtrl', function($scope){
      
    						$scope.city = "assets/img/header.jpg";
+              $scope.searching = false;
 
+
+              $scope.toggle = function(){
+                   $scope.searching = !$scope.searching;
+                   console.log($scope.searching);
+              }
 
  });      		 	     
 
 
  app.config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {
+
+    
+      $(window).on('resize', render.map);
+
      
       $routeProvider
         .when('/', {
@@ -70,6 +88,5 @@ function loadScript(src) {
 
 
     }]);
-
 
 

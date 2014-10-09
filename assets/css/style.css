@@ -7,6 +7,12 @@
 }
 body{
 	font-family: 'Roboto', sans-serif;
+	   overflow: auto; /* or overflow: scroll, if that's your thing */
+    -webkit-overflow-scrolling: touch;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
 }
 header{
 	background: #221122;
@@ -14,6 +20,7 @@ header{
 	width: 100%;
 	left: 0;
 	top: 0;
+	z-index:10;
 }
 
 header .topH{
@@ -85,7 +92,7 @@ section.home .hoursContainer{
 }
 section.home h3{
 	color:white;
-	font-size: 1.6em;
+	font-size: 1.4em;
 	font-weight: 100;
 	padding-bottom: 1.3em;
 }
@@ -93,8 +100,7 @@ section.home .hoursContainer .hours{
 	background: #210F21;
 	margin: 0 auto;
 	padding: 2em 0;
-	text-align: center;
-	width: 90%;
+	text-align: center;	
 }
 section.home .hoursContainer .hours a{
 	color: white;
