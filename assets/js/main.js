@@ -1,10 +1,13 @@
 var mapLoaded = false;
 window.MAP = null;
 window.positionMark = null;
-
+var device = !! window.cordova ? 'cordova' : 'html5';
 
 function loadMap(){
-          		 	     	var canvas = document.getElementById('map');
+
+            if(!utils.coverage) return;
+                
+           		 	     	var canvas = document.getElementById('map');
                       _location.latLng = new google.maps.LatLng(_location.lat,_location.lng);
 
           		 	     	var options = {
@@ -19,17 +22,9 @@ function loadMap(){
                 utils.position.init();
 
 
-                  navigator.geolocation.watchPosition(function(position) {
-
-                                 
-                                        _location.lat = position.coords.latitude;
-                                        _location.lng = position.coords.longitude;
-                                         utils.position.update();
-
-                                }, null, {maximumAge: 3000, timeout: 5000, enableHighAccuracy: true} );
+                  enviroment[device].watchPosition();
 
                                      
-
 
           		 }
 
@@ -85,8 +80,25 @@ var utils = {
                  icon : 'assets/img/current.png'
                 });
 
+        },
+
+        getCity : function( callback){
+
+              $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?latlng=' + _location.lat + ',' + _location.lng, function(rs){
+
+                                     _location.city = rs.results[0].address_components[3].short_name.split(' ')[0];
+                                      console.log(JSON.stringify(_location));
+
+                                      if(callback)
+                                         callback(_location);
+
+                                });
+
         }
 
+       },
+       coverage : function(){
+            return enviroment[device].isOnline();
        }
 }
 
@@ -99,12 +111,10 @@ var _location = {
 
 
  var enviroment = {
-      desktop : {
-              init : function(){
-
-              },
-              perms : {
-                    location : function( callback){
+      html5 : {
+              //metodos para app corriendo html5
+              perms : {  // permisos 
+                    location : function( callback){  // localizacion
 
                          if(navigator.geolocation)
                            navigator.geolocation.getCurrentPosition(function(position){
@@ -114,23 +124,32 @@ var _location = {
 
 
 
-                                $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?latlng=' + _location.lat + ',' + _location.lng, function(rs){
-
-                                     _location.city = rs.results[0].address_components[3].short_name.split(' ')[0];
-                                      console.log(JSON.stringify(_location));
-
-                                      callback(_location);
-
-                                });
+                               utils.position.getCity( callback);
 
 
                               
                            })
 
                     }
-              }
+              },
+              watchPosition : function(){   // checamos el cambio de posicion del usuario
+
+                                navigator.geolocation.watchPosition(function(position) {
+
+                                 
+                                        _location.lat = position.coords.latitude;
+                                        _location.lng = position.coords.longitude;
+                                         utils.position.update();
+
+                                }, null, {maximumAge: 3000, timeout: 5000, enableHighAccuracy: true} );
+
+
+
+              },
+              isOnline : function(){  var online = navigator.online;  }
       },
-      mobile : {
+      // metodos para cordova 
+      cordova : {
           init : function(){
 
                $(document).on('deviceReady', function(){
@@ -142,7 +161,7 @@ var _location = {
  }
 
 
- var app = angular.module('motelea', ['ngRoute', 'ngAnimate']);   
+var app = angular.module('motelea', ['ngRoute', 'ngAnimate']);   
 
 
 app.controller('nearCtrl', function(){
@@ -168,7 +187,7 @@ app.controller('searchCtrl', function($scope){
                    console.log($scope.searching);
               }
 
-              enviroment.desktop.perms.location(function(loc){
+              enviroment[device].perms.location(function(loc){
 
                   $scope.$apply(function() {
                       $scope.city = loc.city;
@@ -183,8 +202,6 @@ app.controller('searchCtrl', function($scope){
  app.config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {
 
-    
-      $(window).on('resize', render.map);
 
 
      
@@ -209,3 +226,11 @@ app.controller('searchCtrl', function($scope){
     }]);
 
 
+
+ app.run(function($window, $rootScope){
+
+
+        $(window).on('resize', render.map);
+       
+ 
+ });
