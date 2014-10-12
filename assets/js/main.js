@@ -1,7 +1,7 @@
 var mapLoaded = false;
 window.MAP = null;
 window.positionMark = null;
-var device = !! window.cordova ? 'cordova' : 'html5';
+var device = !! window.cordova ? 'mobile' : 'html5';
 
 function loadMap(){
 
@@ -149,7 +149,7 @@ var _location = {
               isOnline : function(){  var online = navigator.online;  }
       },
       // metodos para cordova 
-      cordova : {
+      mobile : {
           init : function(){
 
                $(document).on('deviceReady', function(){
