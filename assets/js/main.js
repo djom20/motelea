@@ -2,6 +2,13 @@ var mapLoaded = false;
 window.MAP = null;
 window.positionMark = null;
 var device = !! window.cordova ? 'mobile' : 'html5';
+var _location = {
+     lat : null,
+     lng : null,
+     city : null,
+     latLng : null        
+}
+
 
 function loadMap(){
 
@@ -58,7 +65,10 @@ var utils = {
        position : 
             
        {
-         update : function(){
+         update : function(lat, lng){
+
+          _location.lat = lat;
+          _location.lng = lng;
 
           if(google){
 
@@ -102,16 +112,13 @@ var utils = {
        }
 }
 
-var _location = {
-     lat : null,
-     lng : null,
-     city : null,
-     latLng : null        
-}
 
 
  var enviroment = {
       html5 : {
+               init : function(){
+                  // inicia el app
+               },
               //metodos para app corriendo html5
               perms : {  // permisos 
                     location : function( callback){  // localizacion
@@ -136,17 +143,15 @@ var _location = {
 
                                 navigator.geolocation.watchPosition(function(position) {
 
-                                 
-                                        _location.lat = position.coords.latitude;
-                                        _location.lng = position.coords.longitude;
-                                         utils.position.update();
+                                                                         
+                                         utils.position.update(position.coords.latitude, position.coords.longitude);
 
                                 }, null, {maximumAge: 3000, timeout: 5000, enableHighAccuracy: true} );
 
 
 
               },
-              isOnline : function(){  var online = navigator.online;  }
+              isOnline : function(){  return navigator.online;  }
       },
       // metodos para cordova 
       mobile : {
@@ -183,7 +188,8 @@ app.controller('searchCtrl', function($scope){
 
 
               $scope.toggle = function(){
-                   $scope.searching = !$scope.searching;
+                   $scope.searching = !$scope.searching;                   
+                   document.getElementById("search").focus();
                    console.log($scope.searching);
               }
 
@@ -234,6 +240,7 @@ app.controller('searchCtrl', function($scope){
 
 
         $(window).on('resize', render.map);
+        enviroment[device].init();
        
  
  });

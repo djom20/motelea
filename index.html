@@ -51,15 +51,17 @@
             <div class="topH noSelect wrapper" >
               <table >
                 <tr ng-controller="searchCtrl" >
-                  <td  class="animated">
-                <h1 style="font-weight: 300;" ng-class="{ 'animated fadeIn' : !searching, 'hidden' : searching }"><a href="#/menu" class="amenu"><i style="color:#FA054B" class="fa">&#9776;</i></a> Motelea</h1>
+                  <td  class="animated" style="height:61px">
+                <h1 style="font-weight: 300;" ng-show="!searching" ng-hide="searching"><a href="#/menu" class="amenu"><i style="color:#FA054B" class="fa fa-bars"></i></a> Motelea</h1>
 
-                <div ng-class="{ 'animated fadeIn' : searching , 'hidden' : !searching }" class="hidden">
-                  <input type="text" value="" placeholder="Buscar...">
-                </div>
+                
+                <span ng-show="searching" ng-hide="!searching" style="display:block">
+                  <input type="text" class="input-styled " id="search" placeholder="Buscar..." ng-blur="searching=false" />
+                </span>
 
                  </td>
-                  <td >                  
+                  <td >       
+
                     <icon ng-click='toggle()' style="font-size:21px" class="to-right"> <i class="fa fa-search"></i> </icon>
                     
                  </td>
@@ -110,7 +112,7 @@
           <br>
           <br>
 
-          <div id='app-cont'  ng-animate ng-view>
+          <div id='app-cont' class="animated"  ng-animate ng-view>
             
           		
 
