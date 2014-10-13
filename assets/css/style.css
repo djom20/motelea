@@ -66,14 +66,14 @@ section.home .bottomH .promos a{
 }
 section.home .bottomH .near{
 	background: #F20649;
-color: white;
-font-size: 22px;
-font-weight: 300;
-margin: 0 auto;
-margin-top: 2em;
-text-decoration: none;
-text-align: center;
-padding: 14px 22px;
+	color: white;
+	font-size: 22px;
+	font-weight: 300;
+	margin: 0 auto;
+	margin-top: 2em;
+	text-decoration: none;
+	text-align: center;
+	padding: 14px 22px;
 
 }
 section.home .bottomH .here{
@@ -161,6 +161,47 @@ section.home .gallery .bottomG h4{
 section.home .gallery .bottomG span{
 	display: block;
 }
+section.menu a,section.menu a span{
+	display: block;
+	text-align: center;
+	width: 100%;
+}
+section.menu a{
+	background: #462445;
+	color:white;
+	font-size: 1.5em;
+	font-weight: 300;
+	padding: 1.2em 0;
+	text-decoration: none;
+}
+
+section.menu a:nth-child(2){
+	background: #663552;
+}
+section.menu a:nth-child(3){
+	background: #FFA755;
+}
+section.menu a:last-child{
+	background: #FD6C53;
+}
+section.menu a:active{
+	background: #221122;
+}
+section.menu a i{
+	font-size: 1.8em;
+	font-weight: 300;
+}
+section.menu .top-menu{
+	background: #301630;
+	color:white;
+	font-size: 1.4em;
+	padding: .4em 0 .4em 1em;
+}
+section.menu .top-menu img{
+	border-radius: 50%;
+	vertical-align: middle;
+	width: 70px;
+}
 .noSelect{
 	-webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -202,7 +243,9 @@ p{padding: 0; margin: 0;}
 	 
 }
 
-
+#app-cont .menu{
+	margin-top: 3em;
+}
 
 #map{
 	
@@ -212,7 +255,6 @@ p{padding: 0; margin: 0;}
 	width: 100%;
 }
 @media(max-width: 480px) {
-	section.home .bottomH .near{		
-		margin-top: 3em;		
+	section.home .bottomH .near{			
 	}
 }

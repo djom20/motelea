@@ -218,6 +218,9 @@ app.controller('searchCtrl', function($scope){
           templateUrl: 'views/near.html', 
           controller : 'nearCtrl'
         })
+        .when('/menu', {
+          templateUrl: 'views/menu.html',
+        })
         .when('/promos', {
           templateUrl: 'views/promos.html'
         })
