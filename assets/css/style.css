@@ -7,7 +7,7 @@
 }
 body{
 	font-family: 'Roboto', sans-serif;
-	   overflow: auto; /* or overflow: scroll, if that's your thing */
+	   
     -webkit-overflow-scrolling: touch;
     position: absolute;
     width: 100%;
