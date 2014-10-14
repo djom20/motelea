@@ -27,6 +27,7 @@ function loadMap(){
           		 	      
                 window.MAP = new google.maps.Map(canvas, options);
                 utils.position.init();
+                utils.position.getDistance = google.maps.geometry.spherical.computeDistanceBetween;
 
 
                   enviroment[device].watchPosition();
@@ -104,8 +105,9 @@ var utils = {
 
                                 });
 
-        }
+        },
 
+        getDistance : null
        },
        coverage : function(){
             return enviroment[device].isOnline();
@@ -172,7 +174,7 @@ var app = angular.module('motelea', ['ngRoute', 'ngAnimate']);
 app.controller('nearCtrl', function(){
      
                 render.map();
-                loadScript('//maps.google.com/maps/api/js?sensor=false&callback=loadMap');
+                loadScript('//maps.google.com/maps/api/js?sensor=false&libraries=geometry&callback=loadMap');
    					//	  loadScript('//google-maps-utility-library-v3.googlecode.com/svn/trunk/geolocationmarker/src/geolocationmarker-compiled.js');
                 //var GeoMarker = new GeolocationMarker(MAP);
 
@@ -224,8 +226,7 @@ app.controller('searchCtrl', function($scope){
 
         for(i=0;i<5;i++)                                   
               stars_ += ( i < stars ) ? '<i class="fa fa-star"></i>' : '<i class="fa fa-star-o"></i>';
-
-            alert(stars_)
+            
 
         $(rates[x]).html(stars_);     
 
