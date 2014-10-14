@@ -185,11 +185,16 @@ app.controller('searchCtrl', function($scope){
      
    						$scope.city = "";
               $scope.searching = false;
+              stars();
+
 
 
               $scope.toggle = function(){
-                   $scope.searching = !$scope.searching;                   
-                   document.getElementById("search").focus();
+                   $scope.searching = !$scope.searching;    
+                    
+                   if($scope.searching)           
+                     $("#search").focus();
+
                    console.log($scope.searching);
               }
 
@@ -202,7 +207,32 @@ app.controller('searchCtrl', function($scope){
               });
 
 
- });      		 	     
+ });      	
+
+
+// esta función construye el componente de estrellas (ratings)
+
+ function stars(){
+
+    var rates = $('[data-star]');
+
+    for(x in rates){
+
+        var stars = parseInt($(rates[x]).attr('data-stars'));
+        var stars_ = "";
+
+
+        for(i=0;i<5;i++)                                   
+              stars_ += ( i < stars ) ? '<i class="fa fa-star"></i>' : '<i class="fa fa-star-o"></i>';
+
+            alert(stars_)
+
+        $(rates[x]).html(stars_);     
+
+
+    }
+
+ }	 	     
 
 
  app.config(['$routeProvider', '$locationProvider',
@@ -241,6 +271,5 @@ app.controller('searchCtrl', function($scope){
 
         $(window).on('resize', render.map);
         enviroment[device].init();
-       
  
  });
