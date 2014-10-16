@@ -110,7 +110,7 @@ section.home .hoursContainer .hours a{
 	text-decoration: none;
 	vertical-align: top;
 }
-section.home .gallery{
+section.home .gallery,section.promos .promo{
 	background: url(../img/motel.jpg) no-repeat;
 	background-size: 100% 100%;
 	color:white;
@@ -128,46 +128,47 @@ section.home .gallery .populares{
 	text-decoration: none;
 	text-align: center;
 }
-section.home .gallery .price{
+section.home .gallery .price,section.promos .promo .price{
 	background: rgba(0,0,0,.4);
 	position: absolute;
 	left: 20px;
 	top:130px;
 }
-section.home .gallery .price span{
+section.home .gallery .price span, section.promos .promo .price span{
 	display: block;
 	font-size: 1.7em;
 	padding: .2em .3em;
 }
-section.home .gallery .price span:last-child{
+section.home .gallery .price span:last-child, section.promos .promo .price span:last-child{
 	background: #F20649;
 	font-size: 1.2em;
 	font-weight: 100;
 }
-section.home .gallery .bottomG{
+section.home .gallery .bottomG, section.promos .promo .bottomG{
 	background: rgba(0,0,0,.4);
 	bottom:0;
 	box-sizing:border-box;
-	font-size: 1.2em;
+	font-size: 1em;
 	padding:1em;
 	position: absolute;
 	text-align: left;
 	width: 100%;
 	left: 0;
 }
-section.home .gallery .bottomG h4{
-	font-size: 1.6em;
+section.home .gallery .bottomG h4, section.promos .promo .bottomG h4{
+	font-size: 1.4em;
 }
-section.home .gallery .bottomG span{
+section.home .gallery .bottomG span,section.promos .promo  .bottomG span{
 	display: block;
 }
-section.menu a,section.menu a span{
+section.menu a,section.menu a span,{
 	display: block;
 	text-align: center;
 	width: 100%;
 }
 section.menu a{
 	background: #462445;
+	-webkit-tap-highlight-color:#221122;
 	color:white;
 	font-size: 1.5em;
 	font-weight: 300;
@@ -197,10 +198,24 @@ section.menu .top-menu{
 	font-size: 1.4em;
 	padding: .4em 0 .4em 1em;
 }
-section.menu .top-menu img{
-	border-radius: 50%;
-	vertical-align: middle;
-	width: 70px;
+section.promos .promo .bottomG{
+	background: none;
+}
+section.promos .promo .rightG{
+	position: absolute;
+	right: 1em;
+	bottom: 15%
+}
+section.promos .promo .rightG .item{
+	display: block;
+	font-size: 1.1em;
+	padding: .3em .4em;
+}
+.lightOrange{
+	background: #FFA755;
+}
+.orange{
+	background: #FD6C53;
 }
 .noSelect{
 	-webkit-touch-callout: none;
