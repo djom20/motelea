@@ -161,7 +161,7 @@ section.home .gallery .bottomG h4, section.promos .promo .bottomG h4{
 section.home .gallery .bottomG span,section.promos .promo  .bottomG span{
 	display: block;
 }
-section.menu a,section.menu a span,{
+section.menu a,section.menu a span{
 	display: block;
 	text-align: center;
 	width: 100%;
